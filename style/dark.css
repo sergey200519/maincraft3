@@ -1,0 +1,9 @@
+.wrapper {
+  background: #636B70;
+}
+.box_rates_items {
+  background: #d1dce3;
+}
+h2, .sub_titles, p, .main_conteiner p {
+  color: black;
+}
