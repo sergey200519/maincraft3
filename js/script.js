@@ -2,8 +2,41 @@ let lights = document.querySelector(".light")
 let darks = document.querySelector(".dark");
 let lights_darks = document.querySelector(".light_dark")
 let themes = document.querySelector(".theme");
+let active_theme_local
+
 
 let flag_auto_theme = true;
+if (localStorage.getItem("theme") == null) {
+  active_theme_local = "auto"
+} else {
+  active_theme_local = localStorage.getItem("theme")
+}
+if (active_theme_local == "auto") {
+  funTheme()
+} else if (active_theme_local == "lig") {
+  flag_auto_theme = false;
+  let main_styles = document.querySelector(".main_style")
+  remove_and_check(lights)
+  if (main_styles.getAttribute("href").indexOf("../") == "-1") {
+    themes.href = "style/style.css";
+    console.log("if", main_styles.href);
+  } else {
+    console.log("else");
+    themes.href = "../style/style.css";
+  }
+} else if (active_theme_local == "dar") {
+  flag_auto_theme = false;
+  let main_styles = document.querySelector(".main_style")
+  remove_and_check(darks)
+  if (main_styles.getAttribute("href").indexOf("../") == "-1") {
+    themes.href = "style/dark.css";
+    console.log("if", main_styles.href);
+  } else {
+    console.log("else");
+    themes.href = "../style/dark.css";
+  }
+}
+
 console.log(lights_darks.classList);
 function remove_and_check(active) {
   active.classList.add("active_theme")
@@ -17,6 +50,7 @@ function remove_and_check(active) {
 }
 
 darks.addEventListener("click", function (e) {
+  localStorage.setItem("theme", "dar")
   flag_auto_theme = false;
   let main_styles = document.querySelector(".main_style")
   remove_and_check(darks)
@@ -31,6 +65,7 @@ darks.addEventListener("click", function (e) {
 
 
 lights.addEventListener("click", function (e) {
+  localStorage.setItem("theme", "lig")
   flag_auto_theme = false;
   let main_styles = document.querySelector(".main_style")
   remove_and_check(lights)
@@ -45,6 +80,7 @@ lights.addEventListener("click", function (e) {
 
 
 lights_darks.addEventListener("click", function (e) {
+  localStorage.setItem("theme", "auto")
   console.log("sdfghjklkjdfghjklbvfdfghjkdfghjk");
   flag_auto_theme = true;
   funTheme()
