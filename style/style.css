@@ -2,6 +2,7 @@
   --font-color-header: white;
   --font-color-main-titles: #3f3d59;
   --font-color-main-text: #3f3d59;
+  --dark-bck-wrapper: #F2F2F2;
 }
 /*reset*/
 *,
@@ -32,7 +33,7 @@ body {
 
 /*the basis    -    main*/
 .wrapper {
-  background: #F2F2F2;
+  background: var(--dark-bck-wrapper);
   border-radius: 10px;
 }
 .conteiner {
@@ -106,6 +107,26 @@ h2, .sub_titles {
   align-items: center;
   width: 100%;
   padding: 0px 10px 0 10px;
+}
+.dark_light {
+  position: absolute;
+  right: 20px;
+  top: 150px;
+  border-radius: 15px;
+  background: #3195ff;
+}
+.dark_light button {
+  background: transparent;
+  padding: 5px 10px;
+  color: white;
+  font-size: 25px;
+  border: 0;
+}
+.dark_light button:hover {
+  cursor: pointer;
+}
+.active_theme {
+  color: black !important;
 }
 .navig, .navigation {
   width: 100%;
